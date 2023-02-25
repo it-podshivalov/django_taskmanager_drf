@@ -1,0 +1,1 @@
+[{"model": "TaskManager.status", "pk": 1, "fields": {"Name": "Not at work"}}, {"model": "TaskManager.status", "pk": 2, "fields": {"Name": "Assigned"}}, {"model": "TaskManager.status", "pk": 3, "fields": {"Name": "At work"}}, {"model": "TaskManager.status", "pk": 4, "fields": {"Name": "Completed"}}]

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>Update Task</h2>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            Name:<br> <p>{{ form.Name }}<br></p>
+            Description:<br> <p><input type="text" name="Description" value="dt1" maxlength="5000" required="" id="id_Description" data-cip-id="id_Description"><br></p>
+            DeadLine:<br> <p>{{ form.DeadlineForCompleting }}<br></p>
+            Project:<br> <p>{{ form.Project }}<br></p>
+            Executor:<br> <p>{{ form.Executor }}<br></p>
+            Status:<br> <p>{{ form.Status }}<br></p>
+            <input type="submit" value="Update">
+        </form>
+        <a href="http://127.0.0.1:8000/"><button>Go back to the task list</button></a>
+    </main>
+</div>
+{% endblock content %}
+

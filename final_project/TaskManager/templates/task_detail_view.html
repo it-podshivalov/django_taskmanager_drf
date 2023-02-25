@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article class="task">
+        <header>
+            <h2>{{ task.Name }}</h2>
+            <p class="task-Description">Description:</p>
+            <article class="task">
+                <p>{{ task.Description }}</p>
+            </article>
+            <p class="task-creationTime">Creation Time - {{ task.CreationTime }}</p>
+
+            <p>
+                <span class="badge">
+                    {% if task.DeadlineForCompleting %}
+                    <p class="task-endTime">DeadLine - {{ task.DeadlineForCompleting }}</p>
+                    {%else%} DeadLine - Not defined 
+                    {%endif%}
+                </span>
+            </p>
+
+            <p>
+                <span class="badge">
+                    {% if task.Status == "Completed" %} Completed 
+                    <p class="task-endTime">Completion Time - {{ task.CompletionTime }}</p>
+                    {%else%} Status - {{ task.Status }} 
+                    {%endif%}
+                </span>
+            </p>
+
+            <p>
+                <span class="badge">
+                    {% if task.Project %} 
+                    <p class="task-endTime">Project - <a href="http://127.0.0.1:8000/projects" class="task">{{ task.Project }}</a></p>
+                    {%else%} Project - Not defined 
+                    {%endif%}
+                </span>
+            </p>
+
+            <p>
+                <span class="badge">
+                    {% if task.Executor %}
+                    <p class="task-endTime">Executor - {{ task.Executor }}</p>
+                    {%else%} Executor - Not defined 
+                    {%endif%}
+                </span>
+            </p>
+
+            <p class="task-creationTime">Author - {{ task.Author }}</p>
+            <p class="task-creationTime">Status - {{ task.Status }}</p>
+
+        </header>
+    </article>
+    <a href="http://127.0.0.1:8000/"><button>Return to list of Tasks</button></a>
+    <a href="{% url 'task_update' task.pk %}"><button>Update Task</button></a>
+{% endblock content %} 

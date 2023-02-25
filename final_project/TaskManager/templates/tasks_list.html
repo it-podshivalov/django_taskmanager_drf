@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="grid-column: 1">
+    <main>
+        <h2>
+            Projects
+        </h2>
+        <article>
+            {% if projects %}
+                {% for project in projects %}
+                    <h3>
+                        <a href="{% url 'project_update' project.pk %}" class="task">{{ project.Name }}</a>
+                    </h3>
+                {% endfor %}
+            {% else %}
+                <p>No Projects.</p>
+            {% endif %}
+        </article>
+        <a href="project/create/"><button>Create Project</button></a>
+        <a href="{% url 'task_create' %}"><button>Create Task</button></a>
+    </main>
+</div>
+<div>
+    <main>
+        <section id="text">
+            <header>
+                <h2>
+                    Task
+                </h2>
+            </header>
+            <article class="forecast">
+                {% if tasks %}
+                    {% for task in tasks %}
+                        <section>
+                            <aside style="width: 50%; font-size: 0.8rem">
+                                <h5>Description:</h5>
+                                <p>
+                                    {{ task.Description }}
+                                </p>
+                            </aside>
+                            <h3>
+                                <a href="{% url 'task' task.pk %}" class="task">{{ task.Name }}</a>
+                            </h3>
+                            <p>
+                                <span class="badge">
+                                    {% if task.Project %} 
+                                    <p class="attr">Project - {{ task.Project }}</a></p>
+                                    {%else%} Project - Not defined 
+                                    {%endif%}
+                                </span>
+                            </p>
+                            <p>
+                                <span class="badge">
+                                    {% if task.Executor %} 
+                                    <p class="attr">Executor - {{ task.Executor }}</a></p>
+                                    {%else%} Project - Not assigned 
+                                    {%endif%}
+                                </span>
+                            </p>
+                            <p class="attr">Status - {{ task.Status }}</p>
+                            <a href="{% url 'task_update' task.pk %}"><button>Update Task</button></a>
+                            <a href="{% url 'task_delete' task.pk %}"><button style="background-color: red;">Delete Task</button></a>
+                        </section>
+                    {% endfor %}
+                {% else %}
+                    <p>No Tasks.</p>
+                {% endif %}
+            </article>
+        </section>
+    </main>
+</div>
+<div style="grid-column: 3">
+    <main>
+        <h2>
+            Filters
+        </h2>
+        <article>
+            <p>
+                <form action="" method="get">
+                    Name:<br>
+                    <p>{{ filter.form.Name }}<br></p>
+                    Project:<br> 
+                    <p>{{ filter.form.Project }}<br></p>
+                    Status:<br> 
+                    <p>{{ filter.form.Status }}<br></p>
+                    <input type="submit" value="Search" />
+                </form>
+            </p>
+        </article>
+    </main>
+</div>
+
+
+{% endblock content %}

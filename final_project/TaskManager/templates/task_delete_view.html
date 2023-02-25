@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<div>
+	<h2>Deleting a Task</h2>
+	<main>
+		<form method="post" class="card">
+			{% csrf_token %}
+			<p>Are you sure you want to delete Task?</p> <h3>"{{ task.Name }}"</h3>
+			<p class="form-buttons">
+				<input style="background-color: red;" type="submit" class="btn btn-primary" value="Delete">
+			</p>
+		</form>
+		<a href="http://127.0.0.1:8000/"><button>Go back to the task list</button></a>
+	</main>
+</div>
+
+{%endblock content%}

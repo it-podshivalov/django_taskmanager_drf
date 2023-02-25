@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>New Project</h2>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            Name:<br> <p>{{ form.Name }}<br></p>
+            Description:<br>  <p><textarea type="text" style="padding: 1rem" size="100" name="Description" maxlength="5000" required="" id="id_Description" data-cip-id="id_Description"></textarea><br></p>
+            <input type="submit" value="Create">
+        </form>
+        <a href="http://127.0.0.1:8000/"><button>Go back to the task list</button></a>
+    </main>
+</div>
+{% endblock content %}      
+
